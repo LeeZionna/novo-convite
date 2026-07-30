@@ -1,0 +1,15 @@
+{
+  "name": "convite-de-casamento",
+  "version": "1.0.0",
+  "description": "Convite de casamento Ryan & Diane",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Painel Administrativo | Ryan & Diane</title>
+
+
+<link rel="stylesheet" href="admin.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+</head>
+
+
+
+<body>
+
+
+<!-- PARTICULAS -->
+
+<div id="particles"></div>
+
+
+
+
+<!-- NOTIFICAÇÃO -->
+
+<div id="notificacao">
+
+Nova confirmação recebida 💍
+
+</div>
+
+
+
+
+
+
+
+<!-- HEADER -->
+
+<header class="admin-header">
+
+
+<div class="brand">
+
+
+<h1>
+
+Ryan
+
+<span>&</span>
+
+Diane
+
+</h1>
+
+
+<p>
+
+Painel administrativo do casamento
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="admin-date">
+
+
+<i class="fa-solid fa-heart"></i>
+
+
+<div>
+
+
+<strong>
+
+10.10.2026
+
+</strong>
+
+
+<small id="hora">
+
+00:00:00
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+
+
+
+
+
+
+
+<main class="dashboard">
+
+
+
+
+
+<section class="welcome">
+
+
+<h2>
+
+Controle de convidados
+
+</h2>
+
+
+<p>
+
+Gerencie confirmações, acompanhantes e informações do evento.
+
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ESTATISTICAS -->
+
+
+<section class="stats">
+
+
+
+<div class="stat-card">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+<div>
+
+
+<span>
+
+Total de pessoas
+
+</span>
+
+
+<h3 id="totalConvidados">
+
+0
+
+</h3>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="stat-card">
+
+
+<i class="fa-solid fa-heart-circle-check"></i>
+
+
+<div>
+
+
+<span>
+
+Confirmados
+
+</span>
+
+
+<h3 id="confirmados">
+
+0
+
+</h3>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="stat-card">
+
+
+<i class="fa-solid fa-heart-crack"></i>
+
+
+<div>
+
+
+<span>
+
+Não irão
+
+</span>
+
+
+<h3 id="naoConfirmados">
+
+0
+
+</h3>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="stat-card">
+
+
+<i class="fa-solid fa-user-group"></i>
+
+
+<div>
+
+
+<span>
+
+Convites
+
+</span>
+
+
+<h3 id="convites">
+
+0
+
+</h3>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- CONTROLE -->
+
+
+<section class="controle">
+
+
+
+
+
+<div class="section-top">
+
+
+<div>
+
+
+<h2>
+
+Lista de convidados
+
+</h2>
+
+
+<p>
+
+Acompanhe todas as confirmações
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="actions">
+
+
+<input 
+type="text"
+id="pesquisar"
+placeholder="Pesquisar convidado..."
+>
+
+
+<button id="exportar">
+
+<i class="fa-solid fa-file-export"></i>
+
+Exportar
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- MENU -->
+
+
+<div class="filtros">
+
+
+<button 
+class="ativo"
+data-filtro="todos">
+
+Todos
+
+</button>
+
+
+
+<button 
+data-filtro="sim">
+
+Confirmados
+
+</button>
+
+
+
+<button 
+data-filtro="nao">
+
+Não irão
+
+</button>
+
+
+
+<button 
+data-filtro="total">
+
+Total de convidados
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- LISTA -->
+
+
+<div 
+class="lista"
+id="listaConvidados">
+
+
+<!-- CARDS GERADOS PELO JS -->
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- MODAL EDITAR -->
+
+
+<div 
+class="modal"
+id="modalEditar">
+
+
+
+<div class="modal-box">
+
+
+<h2>
+
+Editar convidado
+
+</h2>
+
+
+
+<input 
+id="editarNome"
+placeholder="Nome"
+>
+
+
+
+<input 
+id="editarQuantidade"
+type="number"
+placeholder="Quantidade"
+>
+
+
+
+<h3>
+
+Acompanhantes
+
+</h3>
+
+
+<div id="editarAcompanhantes">
+
+
+</div>
+
+
+
+<button id="salvarEdicao">
+
+Salvar alterações
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+
+<script src="admin.js"></script>
+
+
+
+</body>
+
+
+</html>
